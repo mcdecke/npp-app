@@ -2,8 +2,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+
+    <!-- <app-add-poster></app-add-poster> -->
+
       <app-info-area></app-info-area>
-      <button class="btn btn-primary" (click)="onSave()">Add Poster</button>
+
+      <form (ngSubmit)="onAddPoster(f)" #f="ngForm">
+        <hr>
+        <label for="park">Park Name:</label>
+        <input type="text" name="name" ngModel [value]="name">{{name}}
+        <hr>
+        Url:
+        <input type="text" name="url" ngModel [value]="url">{{url}}
+        <hr>
+        Description:
+        <textarea name="text" rows="8" cols="80" [value]="text" ngModel></textarea>
+        <button class="btn btn-primary" >Save</button>
+
+        <button class="btn btn-primary" (click)="onSave()">Add Poster</button>
+      </form>
+
       <router-outlet></router-outlet>
     </div>
   </div>
