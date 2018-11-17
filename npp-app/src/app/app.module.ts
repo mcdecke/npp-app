@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { InfoAreaComponent } from './info-area/info-area.component';
 import { PosterService } from './poster.service'
 import { HttpModule } from '@angular/http'
-import { AddPosterComponent } from './add-poster/add-poster.component'
+import { AddPosterComponent } from './add-poster/add-poster.component';
 
 @NgModule({
   declarations: [

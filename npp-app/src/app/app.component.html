@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-12">
 
-    <!-- <app-add-poster></app-add-poster> -->
+      <!-- <app-add-poster></app-add-poster> -->
 
       <app-info-area></app-info-area>
 
@@ -11,18 +11,34 @@
         <hr>
         <label for="park">Park Name:</label>
         <input type="text" name="name" ngModel [value]="name">{{name}}
-        <hr>
-        Url:
+        <hr> Url:
         <input type="text" name="url" ngModel [value]="url">{{url}}
-        <hr>
-        Description:
+        <hr> Description:
         <textarea name="text" rows="8" cols="80" [value]="text" ngModel></textarea>
-        <button class="btn btn-primary" >Save</button>
-
-        <button class="btn btn-primary" (click)="onSave()">Add Poster</button>
+        <button class="btn btn-primary">Save</button>
       </form>
 
+      <button class="btn btn-primary" (click)="onGet()">Get Posters</button>
+
       <router-outlet></router-outlet>
+
     </div>
   </div>
-<app-footer></app-footer>
+
+  <form (ngSubmit)="onSearch(g)" #g="ngForm">
+    <label for="search">Search Park:</label>
+    <input type="text" name="search" ngModel [value]="search">
+    <button class="btn btn-primary">Find Poster</button>
+    <hr>
+  </form>
+
+
+  <div>
+    Posters!
+    <ul class="list-group" *ngFor="let poster of filteredPosters">
+      <li class="list-group-item">{{ poster.name }} (Description: {{ poster.text }})</li>
+      <img src="{{poster.url}}" alt="hi">
+    </ul>
+  </div>
+
+  <!-- <app-footer></app-footer> -->
