@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { PosterService } from './poster.service'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { PosterService } from './poster.service'
 
 export class AppComponent {
   title = 'npp-app';
+
+  faCoffee = faCoffee
 
   posters = []
   filteredPosters = []
