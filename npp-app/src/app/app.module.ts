@@ -10,6 +10,7 @@ import { InfoAreaComponent } from './info-area/info-area.component';
 import { PosterService } from './poster.service'
 import { HttpModule } from '@angular/http'
 import { AddPosterComponent } from './add-poster/add-poster.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddPosterComponent } from './add-poster/add-poster.component';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    AngularFontAwesomeModule,
   ],
   providers: [PosterService],
   bootstrap: [AppComponent]
