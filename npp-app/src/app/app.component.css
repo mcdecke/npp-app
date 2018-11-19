@@ -2,3 +2,10 @@ img {
   height:auto;
   width:100%;
 }
+
+.resBox {
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+}

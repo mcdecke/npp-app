@@ -46,4 +46,19 @@
     </ul>
   </div>
 
-  <app-footer></app-footer>
+  <!-- <app-footer></app-footer> -->
+  <div class="card text-center">
+    <div class="card-body">
+      <div class="card-title">
+        <i class="fa fa-arrow-left col-3"></i>
+        <i class="fa fa-search col-3" (click)="onFocus()"></i>
+        <div class="fa resBox">{{this.filteredPosters.length}}</div>
+        <i class="fa fa-arrow-right col-3"></i>
+      </div>
+    </div>
+    <div class="container-fluid card-footer text-center">
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://national-park-posters.com">national-park-posters.com</a>
+      </div>
+    </div>
+  </div>
