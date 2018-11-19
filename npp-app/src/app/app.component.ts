@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { PosterService } from './poster.service'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent{
   title = 'npp-app';
 
   faCoffee = faCoffee
@@ -65,20 +65,27 @@ export class AppComponent {
 
   onSearch(form: NgForm) {
 
-    const search = form.value.search
+    const search = form.value.search.toLowerCase()
     console.log(search)
+    this.filteredPosters = []
 
     this.posterService.getPosters()
       .subscribe(
       (posters: any[]) => {
         for (let key in posters) {
           for (let i = 0; i < posters[key].length; i++) {
-            if (posters[key][i] !== null && posters[key][i].name == search) {
-              this.filteredPosters.push({
-                name: posters[key][i].name,
-                url: posters[key][i].url,
-                text: posters[key][i].text
-              })
+            if (posters[key][i] !== null ) {
+              const ans = posters[key][i].name.toLowerCase()
+              console.log(ans.match(search))
+
+              if(ans.match(search)){
+                this.filteredPosters.push({
+                  name: posters[key][i].name,
+                  url: posters[key][i].url,
+                  text: posters[key][i].text
+                })
+              }
+              console.log(ans)
             }
           }
         }
