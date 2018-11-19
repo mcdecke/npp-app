@@ -17,6 +17,7 @@ export class AppComponent{
   posters = []
   filteredPosters = []
   search = ''
+  posterNav = 0
 
   constructor(private posterService: PosterService) { }
 
@@ -93,6 +94,16 @@ export class AppComponent{
       },
       (error) => console.log(error)
       )
+  }
+
+  onLeft(){
+    console.log('hey')
+    this.posterNav -= 1
+  }
+
+  onRight(){
+    console.log('ho')
+    this.posterNav += 1
   }
 
 }

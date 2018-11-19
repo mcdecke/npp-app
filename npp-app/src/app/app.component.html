@@ -4,9 +4,7 @@
     <div class="col-md-12">
 
       <!-- <app-add-poster></app-add-poster> -->
-
       <!-- <app-info-area></app-info-area> -->
-
       <!-- <form (ngSubmit)="onAddPoster(f)" #f="ngForm">
         <hr>
         <label for="park">Park Name:</label>
@@ -17,11 +15,9 @@
         <textarea name="text" rows="8" cols="80" [value]="text" ngModel></textarea>
         <button class="btn btn-primary">Save</button>
       </form>
-
       <button class="btn btn-primary" (click)="onGet()">Get Posters</button> -->
 
       <router-outlet></router-outlet>
-
     </div>
   </div>
 
@@ -40,20 +36,20 @@
 
   <div>
     Posters!
-    <ul class="list-group" *ngFor="let poster of filteredPosters">
-      <li class="list-group-item">{{ poster.name }} (Description: {{ poster.text }})</li>
-      <img src="{{poster.url}}" alt="hi">
-    </ul>
+    <!-- <ul class="list-group" *ngFor="let poster of filteredPosters"> -->
+      <li class="list-group-item">{{ filteredPosters[posterNav].name }} (Description: {{ filteredPosters[posterNav].text }})</li>
+      <img src="{{filteredPosters[posterNav].url}}" alt="hi">
+    <!-- </ul> -->
   </div>
 
   <!-- <app-footer></app-footer> -->
   <div class="card text-center">
     <div class="card-body">
       <div class="card-title">
-        <i class="fa fa-arrow-left col-3"></i>
+        <i class="fa fa-arrow-left col-3" (click)="onLeft()"></i>
         <i class="fa fa-search col-3" (click)="onFocus()"></i>
         <div class="fa resBox">{{this.filteredPosters.length}}</div>
-        <i class="fa fa-arrow-right col-3"></i>
+        <i class="fa fa-arrow-right col-3" (click)="onRight()"></i>
       </div>
     </div>
     <div class="container-fluid card-footer text-center">
