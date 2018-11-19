@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { PosterService } from './poster.service'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +18,7 @@ export class AppComponent{
   filteredPosters = []
   search = ''
   posterNav = 0
+  expanded = false
 
   constructor(private posterService: PosterService) { }
 
@@ -97,13 +98,25 @@ export class AppComponent{
   }
 
   onLeft(){
-    console.log('hey')
-    this.posterNav -= 1
+    if(this.posterNav > 0){
+      this.posterNav -= 1
+    }
+    else {
+      this.posterNav = this.filteredPosters.length - 1
+    }
   }
 
   onRight(){
-    console.log('ho')
-    this.posterNav += 1
+    if(this.posterNav < this.filteredPosters.length - 1){
+      this.posterNav += 1
+    }
+    else {
+      this.posterNav = 0
+    }
+  }
+
+  toggleShow(event: any){
+    this.expanded = !this.expanded
   }
 
 }

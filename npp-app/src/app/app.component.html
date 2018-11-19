@@ -37,8 +37,13 @@
   <div>
     Posters!
     <!-- <ul class="list-group" *ngFor="let poster of filteredPosters"> -->
-      <li class="list-group-item">{{ filteredPosters[posterNav].name }} (Description: {{ filteredPosters[posterNav].text }})</li>
+
+    <ng-container>
       <img src="{{filteredPosters[posterNav].url}}" alt="hi">
+      <div class="list-group-item" *ngIf="expanded == true">{{ filteredPosters[posterNav].name }} (Description: {{filteredPosters[posterNav].text }})</div>
+  </ng-container>
+
+
     <!-- </ul> -->
   </div>
 
@@ -47,7 +52,8 @@
     <div class="card-body">
       <div class="card-title">
         <i class="fa fa-arrow-left col-3" (click)="onLeft()"></i>
-        <i class="fa fa-search col-3" (click)="onFocus()"></i>
+        <i class="fa fa-info-circle col-3" (click)="toggleShow($event)"
+        ></i>
         <div class="fa resBox">{{this.filteredPosters.length}}</div>
         <i class="fa fa-arrow-right col-3" (click)="onRight()"></i>
       </div>
