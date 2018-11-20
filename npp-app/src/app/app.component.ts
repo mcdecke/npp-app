@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { PosterService } from './poster.service'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class AppComponent{
+  @ViewChild('f') parkForm: NgForm
   title = 'npp-app';
 
   faCoffee = faCoffee
@@ -30,9 +31,12 @@ export class AppComponent{
       name: form.value.name,
       url: form.value.url,
       text: form.value.text,
-      shop: form.value.shop
+      shop: form.value.shop,
+      state: form.value.state
     })
     console.log(this.posters)
+    this.parkForm.reset()
+
     this.onSave()
   }
 
@@ -56,7 +60,8 @@ export class AppComponent{
                 name: posters[key][i].name,
                 url: posters[key][i].url,
                 text: posters[key][i].text,
-                shop: posters[key][i].shop
+                shop: posters[key][i].shop,
+                state: posters[key][i].state
               })
             }
           }
@@ -87,7 +92,8 @@ export class AppComponent{
                   name: posters[key][i].name,
                   url: posters[key][i].url,
                   text: posters[key][i].text,
-                  shop: posters[key][i].shop
+                  shop: posters[key][i].shop,
+                  state: posters[key][i].state
                 })
               }
               console.log(ans)
