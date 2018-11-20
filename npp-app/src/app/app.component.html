@@ -5,17 +5,19 @@
 
       <!-- <app-add-poster></app-add-poster> -->
       <!-- <app-info-area></app-info-area> -->
-      <!-- <form (ngSubmit)="onAddPoster(f)" #f="ngForm">
+      <form (ngSubmit)="onAddPoster(f)" #f="ngForm">
         <hr>
         <label for="park">Park Name:</label>
         <input type="text" name="name" ngModel [value]="name">{{name}}
         <hr> Url:
         <input type="text" name="url" ngModel [value]="url">{{url}}
+        <hr> Shop:
+        <input type="number" name="shop" ngModel [value]="shop">{{shop}}
         <hr> Description:
         <textarea name="text" rows="8" cols="80" [value]="text" ngModel></textarea>
         <button class="btn btn-primary">Save</button>
       </form>
-      <button class="btn btn-primary" (click)="onGet()">Get Posters</button> -->
+      <button class="btn btn-primary" (click)="onGet()">Get Posters</button>
 
       <router-outlet></router-outlet>
     </div>
@@ -40,7 +42,13 @@
 
     <ng-container>
       <img src="{{filteredPosters[posterNav].url}}" alt="hi">
-      <div class="list-group-item" *ngIf="expanded == true">{{ filteredPosters[posterNav].name }} (Description: {{filteredPosters[posterNav].text }})</div>
+      <div class="list-group-item" *ngIf="expanded == true">{{ filteredPosters[posterNav].name }}
+        <hr>
+        Description: {{filteredPosters[posterNav].text }}
+        <button class="btn btn-primary">
+          <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">Buy Now</a>
+        </button>
+      </div>
   </ng-container>
 
 
@@ -52,7 +60,7 @@
     <div class="card-body">
       <div class="card-title">
         <i class="fa fa-arrow-left col-3" (click)="onLeft()"></i>
-        <i class="fa fa-info-circle col-3" (click)="toggleShow($event)"
+        <i class="fa fa-info-circle col-3" (click)="toggleShow()"
         ></i>
         <div class="fa resBox">{{this.filteredPosters.length}}</div>
         <i class="fa fa-arrow-right col-3" (click)="onRight()"></i>

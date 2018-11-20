@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { PosterService } from './poster.service'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -29,7 +29,8 @@ export class AppComponent{
     this.posters.push({
       name: form.value.name,
       url: form.value.url,
-      text: form.value.text
+      text: form.value.text,
+      shop: form.value.shop
     })
     console.log(this.posters)
     this.onSave()
@@ -54,7 +55,8 @@ export class AppComponent{
               this.filteredPosters.push({
                 name: posters[key][i].name,
                 url: posters[key][i].url,
-                text: posters[key][i].text
+                text: posters[key][i].text,
+                shop: posters[key][i].shop
               })
             }
           }
@@ -84,7 +86,8 @@ export class AppComponent{
                 this.filteredPosters.push({
                   name: posters[key][i].name,
                   url: posters[key][i].url,
-                  text: posters[key][i].text
+                  text: posters[key][i].text,
+                  shop: posters[key][i].shop
                 })
               }
               console.log(ans)
@@ -115,7 +118,7 @@ export class AppComponent{
     }
   }
 
-  toggleShow(event: any){
+  toggleShow(){
     this.expanded = !this.expanded
   }
 
