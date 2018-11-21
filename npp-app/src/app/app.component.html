@@ -32,7 +32,7 @@
 
     <span class="input-group-append">
         <button class="btn btn-outline-secondary border-left-0 border" type="button">
-            <i class="fa fa-search"></i>
+          <i class="fa fa-search"></i>
         </button>
       </span>
     <hr>
@@ -46,7 +46,7 @@
       <img src="{{filteredPosters[posterNav].url}}" alt="hi">
       <div class="list-group-item"
       *ngIf="expanded == true"
-      >{{ filteredPosters[posterNav].name }}
+      >{{ filteredPosters[posterNav].name  }}
         <hr>
         {{filteredPosters[posterNav].text }}
         <!-- <button class="btn btn-outline-info btn-sm"> -->
@@ -69,10 +69,19 @@
         <i class="fa fa-arrow-left col-3" (click)="onLeft()"></i>
 
         <i class="fa fa-info-circle col-3 mr-2"
-
         placement="top"
-        ngbPopover="{{filteredPosters[posterNav].text }}" popoverTitle="{{ filteredPosters[posterNav].name }}"
+         [ngbPopover]="popContent" [popoverTitle]="popTitle"
         ></i>
+
+        <ng-template #popTitle>
+          {{ filteredPosters[posterNav].name }}</ng-template>
+        <ng-template #popContent>
+          {{filteredPosters[posterNav].text }}
+          <hr>
+            <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
+              <i class="fa fa-cart-plus fa-size-3x fa-3x"></i>
+            </a>
+        </ng-template>
 
         <!-- <button type="button" class="btn btn-outline-secondary mr-2" placement="top"
         ngbPopover="{{filteredPosters[posterNav].text }}" popoverTitle="{{ filteredPosters[posterNav].name }}">
