@@ -26,17 +26,7 @@
   </div>
 
 
-  <form (ngSubmit)="onSearch(g)" #g="ngForm" class="input-group col-md-4">
-    <label for="search">Search Park:</label>
-    <input class="form-control py-2 border-right-0 border" type="search" name="search" ngModel [value]="search" #focus>
 
-    <span class="input-group-append">
-        <button class="btn btn-outline-secondary border-left-0 border" type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      </span>
-    <hr>
-  </form>
 
   <div>
     <!-- <ul class="list-group" *ngFor="let poster of filteredPosters"> -->
@@ -66,9 +56,9 @@
   <div class="card text-center">
     <div class="card-body">
       <div class="card-title">
-        <i class="fa fa-arrow-left col-3" (click)="onLeft()"></i>
+        <i class="fa fa-arrow-left col-2" (click)="onLeft()"></i>
 
-        <i class="fa fa-info-circle col-3 mr-2"
+        <i class="fa fa-info-circle col-2 mr-2"
         placement="top"
          [ngbPopover]="popContent" [popoverTitle]="popTitle"
         ></i>
@@ -80,17 +70,41 @@
           <hr>
             <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
               <i class="fa fa-cart-plus fa-size-3x fa-3x"></i>
+              Buy Now
             </a>
         </ng-template>
 
-        <!-- <button type="button" class="btn btn-outline-secondary mr-2" placement="top"
-        ngbPopover="{{filteredPosters[posterNav].text }}" popoverTitle="{{ filteredPosters[posterNav].name }}">
-          Info
-        </button> -->
+        <i class="fa fa-search col-2 mb-2"
+          placement="top"
+         [ngbPopover]="searchContent" [popoverTitle]="searchTitle"
+         [autoClose]="'outside'"></i>
 
-        <div class="fa resBox">
+        <ng-template #searchTitle>
+          Search Park:
+        </ng-template>
+
+        <ng-template #searchContent>
+          <form (ngSubmit)="onSearch(g)" #g="ngForm" class="input-group">
+            <input class="form-control
+            border-right-0 border" type="search" name="search" ngModel [value]="search" #focus>
+
+
+                <button class="btn
+                  btn-info
+                 border-left-0 border" type="button">
+                  Search
+                </button>
+
+          </form>
+        </ng-template>
+
+
+
+
+
+        <div class="fa resBox col-2">
           {{this.filteredPosters.length || 0 }}</div>
-        <i class="fa fa-arrow-right col-3" (click)="onRight()"></i>
+        <i class="fa fa-arrow-right col-2" (click)="onRight()"></i>
       </div>
     </div>
     <div class="container-fluid card-footer text-center">
