@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PosterService } from './poster.service'
 import { HttpModule } from '@angular/http'
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     HttpModule,
     FormsModule,
     AngularFontAwesomeModule,
+    NgbModule
   ],
   providers: [PosterService],
   bootstrap: [AppComponent]

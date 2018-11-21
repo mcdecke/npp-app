@@ -6,7 +6,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 
 export class AppComponent{
@@ -16,7 +16,14 @@ export class AppComponent{
   faCoffee = faCoffee
 
   posters = []
-  filteredPosters = []
+  filteredPosters = [{
+    name: "Yosemite National Park",
+    url: "https://www.national-park-posters.com/wp-content/uploads/2014/11/Yosemite-National-Park.jpg",
+    text: "Established in 1890, Yosemite National Park is best known for its magnificent valley. But successful early efforts to include the surrounding mountains and forests also helped pave the way for the United States national park system. Within its nearly 1,200 square miles, you will also see waterfalls, grand meadows, ancient giant sequoias, vast wilderness, and North America’s tallest exposed granite monoliths.",
+    shop: 905,
+    state: "California"
+  }]
+
   search = ''
   posterNav = 0
   expanded = false
@@ -24,6 +31,7 @@ export class AppComponent{
   constructor(private posterService: PosterService) { }
 
   onAddPoster(form: NgForm) {
+    this.posters = []
     console.log(form.value.name)
     console.log(form.value.url)
     console.log(form.value.text)
