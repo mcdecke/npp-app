@@ -136,4 +136,8 @@ export class AppComponent{
     this.expanded = !this.expanded
   }
 
+  onSwiper(){
+    console.log('swipered')
+    alert('swiped')
+  }
 }

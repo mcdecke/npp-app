@@ -8,6 +8,7 @@ import { PosterService } from './poster.service'
 import { HttpModule } from '@angular/http'
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpModule,
     FormsModule,
     AngularFontAwesomeModule,
-    NgbModule
+    NgbModule,
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [PosterService],
   bootstrap: [AppComponent]

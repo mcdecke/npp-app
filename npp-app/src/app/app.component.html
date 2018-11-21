@@ -32,21 +32,21 @@
     <!-- <ul class="list-group" *ngFor="let poster of filteredPosters"> -->
 
 
-    <ng-container>
-      <img src="{{filteredPosters[posterNav].url}}" alt="hi">
-      <div class="list-group-item"
-      *ngIf="expanded == true"
-      >{{ filteredPosters[posterNav].name  }}
+    <ng-container >
+      <img
+       src="{{filteredPosters[posterNav].url}}" alt="{{ filteredPosters[posterNav].name}}"
+        (click)="onRight()"
+       >
+      <div class="list-group-item" *ngIf="expanded == true">{{ filteredPosters[posterNav].name }}
+        <hr> {{filteredPosters[posterNav].text }}
+
         <hr>
-        {{filteredPosters[posterNav].text }}
-        <!-- <button class="btn btn-outline-info btn-sm"> -->
-        <hr>
-          <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
+        <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
             <i class="fa fa-cart-plus fa-size-3x fa-3x"></i>
           </a>
         <!-- </button> -->
       </div>
-  </ng-container>
+    </ng-container>
 
 
     <!-- </ul> -->
@@ -58,9 +58,9 @@
       <div class="card-title">
         <i class="fa fa-arrow-left col-2" (click)="onLeft()"></i>
 
-        <i class="fa fa-info-circle col-2 mr-2"
-        placement="top"
-         [ngbPopover]="popContent" [popoverTitle]="popTitle"
+        <i class="fa fa-info-circle col-2 mb-2"
+         placement="top-left" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+          [autoClose]="'outside'"
         ></i>
 
         <ng-template #popTitle>
@@ -68,30 +68,38 @@
         <ng-template #popContent>
           {{filteredPosters[posterNav].text }}
           <hr>
-            <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
-              <i class="fa fa-cart-plus fa-size-3x fa-3x"></i>
-              Buy Now
-            </a>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col justify-content-left">
+                <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
+                    <i class="fa fa-cart-plus fa-size-3x fa-3x"></i>
+                    Buy Now
+                  </a>
+              </div>
+            </div>
+          </div>
+
         </ng-template>
 
-        <i class="fa fa-search col-2 mb-2"
-          placement="top"
-         [ngbPopover]="searchContent" [popoverTitle]="searchTitle"
-         [autoClose]="'outside'"></i>
+        <i class="fa fa-search col-2 mb-2" placement="top" [ngbPopover]="searchContent" [popoverTitle]="searchTitle" [autoClose]="'true'"
+        #popoverInfo="ngbPopover"
+        ></i>
 
         <ng-template #searchTitle>
           Search Park:
         </ng-template>
 
         <ng-template #searchContent>
-          <form (ngSubmit)="onSearch(g)" #g="ngForm" class="input-group">
+          <form (ngSubmit)="onSearch(g)"
+            (ngSubmit)="popoverInfo.toggle()"
+           #g="ngForm" class="input-group">
             <input class="form-control
             border-right-0 border" type="search" name="search" ngModel [value]="search" #focus>
 
-
-                <button class="btn
-                  btn-info
-                 border-left-0 border" type="button">
+            <button class="btn
+              btn-info
+                 border-left-0 border" type="button" (click)="onSearch(g)"
+                 (click)="popoverInfo.toggle()">
                   Search
                 </button>
 
