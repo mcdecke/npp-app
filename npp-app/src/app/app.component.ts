@@ -132,12 +132,4 @@ export class AppComponent{
     }
   }
 
-  toggleShow(){
-    this.expanded = !this.expanded
-  }
-
-  onSwiper(){
-    console.log('swipered')
-    alert('swiped')
-  }
 }

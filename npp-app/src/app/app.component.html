@@ -54,17 +54,28 @@
 
   <!-- <app-footer></app-footer> -->
   <div class="card text-center">
-    <div class="card-body">
+    <div class="card-body py-1">
       <div class="card-title">
         <i class="fa fa-arrow-left col-2" (click)="onLeft()"></i>
 
         <i class="fa fa-info-circle col-2 mb-2"
          placement="top-left" [ngbPopover]="popContent" [popoverTitle]="popTitle"
           [autoClose]="'outside'"
+
+          #popoverData="ngbPopover"
         ></i>
 
         <ng-template #popTitle>
-          {{ filteredPosters[posterNav].name }}</ng-template>
+          <div>
+            {{ filteredPosters[posterNav].name }}
+            <button type="button" class="close" aria-label="Close"
+            (click)="popoverData.toggle()">
+              <span aria-hidden="true">&times;
+              </span>
+            </button>
+          </div>
+
+        </ng-template>
         <ng-template #popContent>
           {{filteredPosters[posterNav].text }}
           <hr>
@@ -106,17 +117,14 @@
           </form>
         </ng-template>
 
-
-
-
-
         <div class="fa resBox col-2">
           {{this.filteredPosters.length || 0 }}</div>
         <i class="fa fa-arrow-right col-2" (click)="onRight()"></i>
       </div>
     </div>
+
     <div class="container-fluid card-footer text-center">
-      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <div class="footer-copyright text-center ">© 2018 Copyright:
         <a href="https://national-park-posters.com">national-park-posters.com</a>
       </div>
     </div>

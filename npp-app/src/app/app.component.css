@@ -9,3 +9,12 @@ img {
   border-width: 1px;
   border-radius: 3px;
 }
+
+.footer-copyright {
+  font-size: 12px;
+}
+
+.close {
+  font-size: 1.5rem;
+  line-height: .5;
+}
