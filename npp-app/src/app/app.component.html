@@ -80,7 +80,7 @@
           {{filteredPosters[posterNav].text }}
           <hr>
           <div class="container">
-            <div class="row justify-content-center">
+            <div class="row">
               <div class="col justify-content-left">
                 <a href="https://www.national-park-posters.com/cart/?add-to-cart={{filteredPosters[posterNav].shop}}">
                     <i class="fa fa-cart-plus fa-size-3x fa-3x"></i>
@@ -92,15 +92,17 @@
 
         </ng-template>
 
-        <i class="fa fa-search col-2 mb-2" placement="top" [ngbPopover]="searchContent" [popoverTitle]="searchTitle" [autoClose]="'true'"
+        <i class="fa fa-search col-2 mb-2 text-center" placement="top" [ngbPopover]="searchContent" [popoverTitle]="searchTitle" [autoClose]="'true'"
         #popoverInfo="ngbPopover"
         ></i>
 
-        <ng-template #searchTitle>
-          Search Park:
+        <ng-template #searchTitle class="text-center">
+          Search by Park or State:
         </ng-template>
 
-        <ng-template #searchContent>
+        <ng-template
+        class="text-center"
+        #searchContent>
           <form (ngSubmit)="onSearch(g)"
             (ngSubmit)="popoverInfo.toggle()"
            #g="ngForm" class="input-group">

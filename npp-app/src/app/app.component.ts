@@ -92,10 +92,15 @@ export class AppComponent{
         for (let key in posters) {
           for (let i = 0; i < posters[key].length; i++) {
             if (posters[key][i] !== null ) {
-              const ans = posters[key][i].name.toLowerCase()
-              console.log(ans.match(search))
 
-              if(ans.match(search)){
+
+              const nameAns = posters[key][i].name.toLowerCase()
+              const stateAns = posters[key][i].state.toLowerCase()
+
+              console.log(nameAns.match(search))
+              console.log(stateAns)
+
+              if(stateAns.match(search) || nameAns.match(search)){
                 this.filteredPosters.push({
                   name: posters[key][i].name,
                   url: posters[key][i].url,
@@ -104,7 +109,7 @@ export class AppComponent{
                   state: posters[key][i].state
                 })
               }
-              console.log(ans)
+              console.log(stateAns.match(search) +" + "+nameAns.match(search))
             }
           }
         }
