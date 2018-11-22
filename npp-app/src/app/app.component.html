@@ -119,8 +119,8 @@
           </form>
         </ng-template>
 
-        <div class="fa resBox col-2">
-          {{this.filteredPosters.length || 0 }}</div>
+        <div class="fa resBox col-2">{{(this.posterNav+1)}} /
+          {{this.filteredPosters.length}}</div>
         <i class="fa fa-arrow-right col-2" (click)="onRight()"></i>
       </div>
     </div>
